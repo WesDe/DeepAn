@@ -1,0 +1,41 @@
+Category	Techno	Individu	count	percent
+50-100	Short reads technology	NA19240	0.1263239	12.63
+100-250	Short reads technology	NA19240	0.1009107	10.09
+250-500	Short reads technology	NA19240	0.4191717	41.92
+500-1000	Short reads technology	NA19240	0.04166667	4.17
+>1000	Short reads technology	NA19240	0.008152174	0.82
+50-100	Other technologies	NA19240	1	100.00
+100-250	Other technologies	NA19240	1	100.00
+250-500	Other technologies	NA19240	1	100.00
+500-1000	Other technologies	NA19240	1	100.00
+>1000	Other technologies	NA19240	1	100.00
+50-100	Short reads technology	HG00514	0.1246992	12.47
+100-250	Short reads technology	HG00514	0.08856383	8.86
+250-500	Short reads technology	HG00514	0.3572212	35.72
+500-1000	Short reads technology	HG00514	0.04352941	4.35
+>1000	Short reads technology	HG00514	0.005532503	0.55
+50-100	Other technologies	HG00514	1	100.00
+100-250	Other technologies	HG00514	1	100.00
+250-500	Other technologies	HG00514	1	100.00
+500-1000	Other technologies	HG00514	1	100.00
+>1000	Other technologies	HG00514	1	100.00
+50-100	Short reads technology	HG00733	0.1220226	12.20
+100-250	Short reads technology	HG00733	0.0872434	8.72
+250-500	Short reads technology	HG00733	0.3618814	36.19
+500-1000	Short reads technology	HG00733	0.04222451	4.22
+>1000	Short reads technology	HG00733	0.006119951	0.61
+50-100	Other technologies	HG00733	1	100.00
+100-250	Other technologies	HG00733	1	100.00
+250-500	Other technologies	HG00733	1	100.00
+500-1000	Other technologies	HG00733	1	100.00
+>1000	Other technologies	HG00733	1	100.00
+50-100	Short reads technology	HG002	0.7461454	74.61
+100-250	Short reads technology	HG002	0.388726	38.87
+250-500	Short reads technology	HG002	0.465694	46.57
+500-1000	Short reads technology	HG002	0.2116105	21.16
+>1000	Short reads technology	HG002	0.1552734	15.53
+50-100	Other technologies	HG002	1	100.00
+100-250	Other technologies	HG002	1	100.00
+250-500	Other technologies	HG002	1	100.00
+500-1000	Other technologies	HG002	1	100.00
+>1000	Other technologies	HG002	1	100.00

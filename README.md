@@ -23,16 +23,20 @@ Verify that the vcf to annotate contains sequence resolved insertion and are des
 
 ### Insertion annotation, step 2 :
 Transform the vcf file in FASTA format with :
+
     python3 Conversion_vcf_fasta/Vcf_to_fa.py vcf_file.vcf outputname.fa
 
 ### Insertion annotation, step 3 :
 Detection of potential tandem repeat :
+
     python3 TRF/TRF_ALT.py insertion_file.fa path_to_trf
 
 Detection of potential mobile element :
+
 sh Mobile_element/dfam.sh path_to_dfamm_executable vcf_file.fa hmm_model output_file_name
 
 Detection of potential duplication :
+
     python3 Blat_WG.py Query_Blat_inser_WG.py reference_genome.fa insertion_file.fa path_to_blat
 
 Be careful this step may take multiple days to detect the ensemble of potential duplication in the whole genome.

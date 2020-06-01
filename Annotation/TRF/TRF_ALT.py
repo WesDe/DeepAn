@@ -1,3 +1,23 @@
+#!/usr/bin/env python3
+
+"""*******************************************************************************
+	Name: DeepAn 
+	Description: DeepAn aims to provide an automatic annotation of insertion type in vcf file.
+	Author: Wesley Delage
+	Contact: wesley.delage@irisa.fr, IRISA/Univ Rennes/GenScale, Campus de Beaulieu, 35042 Rennes Cedex, France
+	
+	Copyright (C) 2020 Inria
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU Affero General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU Affero General Public License for more details.
+	You should have received a copy of the GNU Affero General Public License
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*******************************************************************************"""
 import sys
 import csv
 import statistics
@@ -9,7 +29,7 @@ from Bio.Blast import NCBIWWW
 import os
 csv.field_size_limit(100000000)
 
-vcf_file_insertion = csv.reader(open(sys.argv[1], 'r'), delimiter='\t')
+fa_file_insertion = sys.argv[1]
 path_trf=sys.argv[2]
 def write_header (outp):
     with open(outp, 'w') as txt:
@@ -59,27 +79,23 @@ def temp_file (couple) :
     outp.writerow(couple)
 
 
-def find_trf(vcf_file,trf):
+def find_trf(fa_file,trf):
     txt_file="readable_format_TRF.txt"
-    for element in vcf_file:
-        if "#" not in element[0] and "@" not in element[0]:
-            chrom = re.sub("chr", "", element[0])
-            position = int(element[1])
-            couple = (chrom, position)
-            liste=element[4]+";"+element[7]
-            svseq = find_seq(liste)
-            size=len(svseq)
-            #print(len(svseq))
-            if len(svseq)>=50 :
-                header = ">"+chrom+"_"+str(element[1])+"_"+str(size)
-                couple = [header, svseq]
-                temp_file(couple)
-                cmd2 = trf + " tmp_seq_1.fa 2 5 7 80 10 50 2000 -l 6 -d -h"
-                os.system(cmd2)
-                convert_readable(txt_file,"tmp_seq_1.fa.2.5.7.80.10.50.2000.dat")
-                cmd1 = "rm tmp_seq_1.*"
-                os.system(cmd1)
-                #break
+    reader = SeqIO.parse(fa_file, "fasta")
+    for element in reader:
+        chrom = re.sub("chr", "", element.description)
+        liste=element[4]+";"+element[7]
+        svseq = str(element.seq)
+        #print(len(svseq))
+        header = ">"+chrom
+        couple = [header, svseq]
+        temp_file(couple)
+        cmd2 = trf + " tmp_seq_1.fa 2 5 7 80 10 50 2000 -l 6 -d -h"
+        os.system(cmd2)
+        convert_readable(txt_file,"tmp_seq_1.fa.2.5.7.80.10.50.2000.dat")
+        cmd1 = "rm tmp_seq_1.*"
+        os.system(cmd1)
+        #break
 
 
-find_trf(vcf_file_insertion, path_trf)
+find_trf(fa_file_insertion, path_trf)

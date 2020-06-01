@@ -30,11 +30,11 @@ from Bio.Blast import NCBIWWW
 import os
 import os.path
 csv.field_size_limit(100000000)
-path_ref=sys.argv[1]
+ref=open(sys.argv[1],'r')
 vcf_file=csv.reader(open(sys.argv[2],'r'),delimiter='\t')
 dictionary = defaultdict(list)
 path_blat=sys.argv[3]
-
+path_ref=sys.argv[4]
 def get_pos_seq(vcf, dictionary):
     for element in vcf :
         svseq="0"
@@ -51,8 +51,8 @@ def get_pos_seq(vcf, dictionary):
     return dictionary
 
 
-def get_ref_seq(path_ref,dictionary) :
-    reader = SeqIO.parse(open(path_ref,'r'), "fasta")
+def get_ref_seq(ref,dictionary) :
+    reader = SeqIO.parse(ref, "fasta")
     for element in reader :
         chrom = re.sub("chr", "", element.description)
         sequence=str(element.seq)

@@ -9,9 +9,9 @@ It allows to annotate repeat location of the insertion and the junctional homolg
 ## Requirements 
 - Python3
 - biopython module (pip3 install biopython)
-- Blat
-- TRF
-- Dfamm and the hmm model associated to the specie studied (see dfamm hmm model)
+- Blat (for linux : http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/blat/blat )
+- TRF (https://tandem.bu.edu/trf/trf.download.html)
+- Dfam and the hmm model associated to the specie studied (https://www.dfam.org ,see dfamm hmm model) 
 
 ## Installation
 git clone https://github.com/WesDe/DeepAn.git
@@ -30,7 +30,7 @@ Detection of potential tandem repeat :
 python3 TRF/TRF_ALT.py insertion_file.fa path_to_trf
 
 Detection of potential mobile element :
-sh Mobile_element/dfamm.sh path_to_dfamm_executable vcf_file.fa hmm_model output_file_name
+sh Mobile_element/dfam.sh path_to_dfamm_executable vcf_file.fa hmm_model output_file_name
 
 Detection of potential duplication :
 python3 Blat_WG.py Query_Blat_inser_WG.py reference_genome.fa insertion_file.fa path_to_blat

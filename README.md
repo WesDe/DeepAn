@@ -44,9 +44,11 @@ Be careful this step may take multiple days to detect the ensemble of potential 
 
 ### Junctional homology detection :
 Detection of potential large homology :
+
     python3 homology/Query_blat_large_homology.py reference_genome.fasta vcf_file.vcf path_to_blat
 
 Detection of potential small homology :
+
     python3 homology/Annotation_microhomology.py reference_genome.fasta vcf_file.vcf
 
 ### VCF annotation :

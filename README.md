@@ -52,4 +52,4 @@ Detection of potential small homology :
     python3 homology/Annotation_microhomology.py reference_genome.fasta vcf_file.vcf
 
 ### VCF annotation :
-    python3 Annotation_vcf.py -v vcf_to_annotate.vcf -a Potential_duplication.psl -m Potenial_mobile_element -t Potenital_TRF -u Potential_small_microhomology -l Potential_large_microhomoloy -o output_name_vcf_annotated
+    python3 Annotation_vcf.py -v vcf_to_annotate.vcf -a Potential_duplication.psl -m Potential_mobile_element -t Potential_TRF -u Potential_small_microhomology -l Potential_large_microhomoloy -o output_name_vcf_annotated

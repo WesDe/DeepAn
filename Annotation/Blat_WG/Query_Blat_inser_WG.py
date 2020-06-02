@@ -30,11 +30,11 @@ from Bio.Blast import NCBIWWW
 import os
 import os.path
 csv.field_size_limit(100000000)
-ref=open(sys.argv[1],'r')
+path_ref=sys.argv[1]
 vcf_file=csv.reader(open(sys.argv[2],'r'),delimiter='\t')
 dictionary = defaultdict(list)
 path_blat=sys.argv[3]
-path_ref=sys.argv[4]
+otp=sys.argv[4]
 def get_pos_seq(vcf, dictionary):
     for element in vcf :
         svseq="0"
@@ -51,8 +51,8 @@ def get_pos_seq(vcf, dictionary):
     return dictionary
 
 
-def get_ref_seq(ref,dictionary) :
-    reader = SeqIO.parse(ref, "fasta")
+def get_ref_seq(path_ref,dictionary) :
+    reader = SeqIO.parse(open(path_ref,'r'), "fasta")
     for element in reader :
         chrom = re.sub("chr", "", element.description)
         sequence=str(element.seq)
@@ -71,7 +71,7 @@ def write_sequence(element,a) :
     couple_1 = [header+"_"+str(len(inser)), inser]
     outp.writerow(couple_1)
 
-def align_blastn(dictionary,path_blat,path_ref_genome) :
+def align_blastn(dictionary,path_blat,path_ref_genome,otp) :
     if os.path.isfile('tmp_seq.fa') :
         cmd_a="rm tmp_seq.fa"
         os.sys(cmd_a)
@@ -82,8 +82,9 @@ def align_blastn(dictionary,path_blat,path_ref_genome) :
         write_sequence(element,dictionary[element])
     cmd = path_blat+" "+ path_ref_genome+" tmp_seq.fa -q=dna -t=dna tmp.psl -noHead"
     os.system(cmd)
-    os.system("cat tmp.psl >> concatenate_result.tsv")
+    cmd_c = "cat tmp.psl >> "+otp
+    os.system(cmd_c)
 
 dictionary=get_pos_seq(vcf_file,dictionary)
 dictionary=get_ref_seq(ref,dictionary)
-align_blastn(dictionary,path_blat,path_ref)
+align_blastn(dictionary,path_blat,path_ref,otp)

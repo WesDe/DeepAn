@@ -29,15 +29,15 @@ Transform the vcf file in FASTA format with :
 ### Insertion annotation, step 3 :
 Detection of potential tandem repeat :
 
-    python3 TRF/TRF_ALT.py insertion_file.fa path_to_trf
+    python3 TRF/TRF_ALT.py insertion_file.fa path_to_trf Potential_TRF.csv
 
 Detection of potential mobile element :
 
-sh Mobile_element/dfam.sh path_to_dfamm_executable vcf_file.fa hmm_model output_file_name
+sh Mobile_element/dfam.sh path_to_dfamm_executable vcf_file.fa hmm_model Potential_mobile_element.csv
 
 Detection of potential duplication :
 
-    python3 Blat_WG.py Query_Blat_inser_WG.py reference_genome.fa insertion_file.fa path_to_blat
+    python3 Blat_WG.py Query_Blat_inser_WG.py reference_genome.fa insertion_file.fa path_to_blat Potential_duplication.csv
 
 Be careful this step may take multiple days to detect the ensemble of potential duplication in the whole genome.
 
@@ -45,11 +45,11 @@ Be careful this step may take multiple days to detect the ensemble of potential 
 ### Junctional homology detection :
 Detection of potential large homology :
 
-    python3 homology/Query_blat_large_homology.py reference_genome.fasta vcf_file.vcf path_to_blat
+    python3 homology/Query_blat_large_homology.py reference_genome.fasta vcf_file.vcf path_to_blat Potential_large_microhomology.psl
 
 Detection of potential small homology :
 
-    python3 homology/Annotation_microhomology.py reference_genome.fasta vcf_file.vcf
+    python3 homology/Annotation_microhomology.py reference_genome.fasta vcf_file.vcf Potential_small_microhomology.csv
 
 ### VCF annotation :
-    python3 Annotation_vcf.py -v vcf_to_annotate.vcf -a Potential_duplication.psl -m Potential_mobile_element -t Potential_TRF -u Potential_small_microhomology -l Potential_large_microhomoloy -o output_name_vcf_annotated
+    python3 Annotation_vcf.py -v vcf_to_annotate.vcf -a Potential_duplication.psl -m Potential_mobile_element.csv -t Potential_TRF.csv -u Potential_small_microhomology.csv -l Potential_large_microhomology.psl -o output_name_vcf_annotated.vcf -h threshold

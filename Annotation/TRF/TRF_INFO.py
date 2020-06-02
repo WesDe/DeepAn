@@ -31,6 +31,7 @@ csv.field_size_limit(100000000)
 
 vcf_file_insertion = csv.reader(open(sys.argv[1], 'r'), delimiter='\t')
 path_trf=sys.argv[2]
+otp=sys.argv[3]
 def write_header (outp):
     with open(outp, 'w') as txt:
         txt.write('Contig StartPos EndPos PeriodSize CopyNumber ConsensusSize PercentMatches PercentIndels Score A C G T Entropy(0-2) Motif Sequence\n')
@@ -79,8 +80,8 @@ def temp_file (couple) :
     outp.writerow(couple)
 
 
-def find_trf(vcf_file,trf):
-    txt_file="readable_format_TRF.txt"
+def find_trf(vcf_file,trf,otp):
+    txt_file=otp
     for element in vcf_file:
         if "#" not in element[0] and "@" not in element[0]:
             chrom = re.sub("chr", "", element[0])
@@ -102,4 +103,4 @@ def find_trf(vcf_file,trf):
                 #break
 
 
-find_trf(vcf_file_insertion, path_trf)
+find_trf(vcf_file_insertion, path_trf,otp)

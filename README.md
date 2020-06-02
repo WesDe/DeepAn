@@ -2,10 +2,9 @@
 [![License](http://img.shields.io/:license-affero-blue.svg)](http://www.gnu.org/licenses/agpl-3.0.en.html)
 
 ## Description
-DeepAn aims to annotate insertion in vcf file which are sequence resolved. It is mainly based on Dbvar and Sequence Ontology insertion description.
-Five insertion types can be annotated : novel sequence, mobile element, tandem repeat, tandem duplication and dispersed duplication. Insertions that can't be associated to a type are identified as unassigned.
-It allows to annotate repeat location of the insertion and the junctional homolgy size observed in every insertion.
-
+DeepAn aims at annotating insertion variants in a given vcf file. Insertion calls must be sequence-resolved (precise location and resolved inserted sequence). Insertion type classification is mainly based on Dbvar and Sequence Ontology insertion descriptions.
+Five insertion types can be annotated : novel sequence, mobile element, tandem repeat, tandem duplication and dispersed duplication. Insertions that can not be associated to a type are labelled as unassigned.
+It also annotates for each insertion the repeat context of the insertion site and the junctional homology size at the breakpoint.
 ## Requirements 
 - Python3
 - biopython module (pip3 install biopython)
@@ -19,7 +18,7 @@ It allows to annotate repeat location of the insertion and the junctional homolg
 ## How to use :
 
 ### Insertion annotation, step 1 : 
-Verify that the vcf to annotate contains sequence resolved insertion and are described in ALT or info section
+Verify that the vcf to be annotated contains sequence resolved insertions whose sequence is present in the ALT field or INFO section.
 
 ### Insertion annotation, step 2 :
 Transform the vcf file in FASTA format with :
@@ -27,20 +26,19 @@ Transform the vcf file in FASTA format with :
     python3 Conversion_vcf_fasta/Vcf_to_fa.py vcf_file.vcf outputname.fa
 
 ### Insertion annotation, step 3 :
-Detection of potential tandem repeat :
+Detection of potential tandem repeats :
 
     python3 TRF/TRF_ALT.py insertion_file.fa path_to_trf Potential_TRF.csv
 
-Detection of potential mobile element :
+Detection of potential mobile elements :
 
 sh Mobile_element/dfam.sh path_to_dfamm_executable vcf_file.fa hmm_model Potential_mobile_element.csv
 
-Detection of potential duplication :
+Detection of potential duplications :
 
     python3 Blat_WG.py Query_Blat_inser_WG.py reference_genome.fa insertion_file.fa path_to_blat Potential_duplication.csv
 
-Be careful this step may take multiple days to detect the ensemble of potential duplication in the whole genome.
-
+Be careful this step may take several days to detect all potential duplications in the whole genome.
 
 ### Junctional homology detection :
 Detection of potential large homology :

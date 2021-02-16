@@ -7,7 +7,7 @@ Five insertion types can be annotated : novel sequence, mobile element, tandem r
 It also annotates for each insertion the repeat context of the insertion site and the junctional homology size at the breakpoint.
 ## Requirements 
 - Python3
-- biopython, numpy python module (pip3 install biopython)
+- biopython, numpy python module
 - Blat (for linux : http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/blat/blat )
 - TRF (https://tandem.bu.edu/trf/trf.download.html)
 - Dfam and the hmm model associated to the specie studied (https://www.dfam.org ,see dfamm hmm model)

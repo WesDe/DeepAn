@@ -10,7 +10,7 @@ It also annotates for each insertion the repeat context of the insertion site an
 - biopython module (pip3 install biopython)
 - Blat (for linux : http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/blat/blat )
 - TRF (https://tandem.bu.edu/trf/trf.download.html)
-- Dfam and the hmm model associated to the specie studied (https://www.dfam.org ,see dfamm hmm model) 
+- Dfam and the hmm model associated to the studied species (https://www.dfam.org ,see dfamm hmm model) 
 
 ## Installation
     git clone https://github.com/WesDe/SVAn.git

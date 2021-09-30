@@ -32,7 +32,7 @@ Detection of potential tandem repeats :
 
 Detection of potential mobile elements :
 
-sh Mobile_element/dfam.sh path_to_dfamm_executable vcf_file.fa hmm_model Potential_mobile_element.csv
+    sh Mobile_element/dfam.sh path_to_dfamm_executable vcf_file.fa hmm_model Potential_mobile_element.csv
 
 Detection of potential duplications :
 

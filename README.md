@@ -13,7 +13,7 @@ It also annotates for each insertion the repeat context of the insertion site an
 - Dfam and the hmm model associated to the specie studied (https://www.dfam.org ,see dfamm hmm model) 
 
 ## Installation
-    git clone https://github.com/WesDe/DeepAn.git
+    git clone https://github.com/WesDe/SVAn.git
 
 ## How to use :
 
